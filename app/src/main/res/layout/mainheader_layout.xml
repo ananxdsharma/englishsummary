@@ -1,0 +1,146 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_border_line"
+        android:orientation="vertical">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/navbar_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:contentDescription="logo"
+            android:src="@drawable/logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/navbar_tagline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/english_summary"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+
+        <!--        <EditText-->
+<!--            android:id="@+id/search_edittext"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:singleLine="true"-->
+<!--            android:layout_margin="16dp"-->
+<!--            android:hint="@string/search_here"-->
+<!--            android:drawableStart="@drawable/baseline_search_icon"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--             />-->
+
+
+        <SearchView
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+
+            />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_menu_icon"
+            android:layout_margin="10dp"
+            android:id="@+id/toggle_btn"
+            android:layout_gravity="center"/>
+
+
+
+
+    </LinearLayout>
+
+        <LinearLayout
+        android:background="@drawable/custom_borderline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menu_option_sec"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_option_home"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="Home">
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_option_englit"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="English Literature">
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_option_enggram"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="English Grammar">
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_option_indianboards"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="Indian Boards">
+
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_option_interactive"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:text="Interactive Learning">
+
+        </TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

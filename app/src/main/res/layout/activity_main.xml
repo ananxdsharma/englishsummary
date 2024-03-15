@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <include layout="@layout/mainheader_layout"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollViewMain">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:background="#eeeeee"
+                android:orientation="vertical"/>
+
+<!--            <com.google.android.gms.ads.AdView-->
+<!--                android:id="@+id/adView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="64dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="English Literature, Summarized!"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="Quiz of the Day"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_radius"
+                    android:orientation="vertical"
+                    android:padding="22dp">
+
+                    <ImageView
+                        android:id="@+id/quiz_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#eeeeee" />
+
+                    <TextView
+                        android:id="@+id/quiz_summary_ques"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Poetics by Aristole Summary in 3 minutes"
+                        android:textColor="@color/green" />
+
+                    <TextView
+                        android:id="@+id/quiz_ques"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:lineHeight="22sp"
+                        android:text="1. From which Shakespearean comedy do the lines ‘And thereby hangs a tale’ and ‘All the world’s a stage’ come?"
+                        android:textColor="@color/black" />
+
+                    <RadioGroup
+                        android:id="@+id/optionsRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/option1RadioButton"
+                            style="@style/Widget.Material3.CompoundButton.RadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Paris" />
+
+                        <RadioButton
+                            android:id="@+id/option2RadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="London" />
+
+                        <RadioButton
+                            android:id="@+id/option3RadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Berlin" />
+
+                        <RadioButton
+                            android:id="@+id/option4RadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Madrid" />
+                    </RadioGroup>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:background="#eeeeee"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Popular category"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_margin="6dp"
+                    android:id="@+id/main_category_frame_text_heading"
+                    android:textColor="@color/black"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/category_grid_lay1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="2"
+                        android:layout_marginBottom="8dp">
+
+                            <LinearLayout
+                                android:id="@+id/thumbnail_englit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="190dp"
+                                    app:cardUseCompatPadding="true"
+                                    android:background="@drawable/shadow_box_for_image"
+                                    android:src="@drawable/category_image_5"/>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:lineHeight="32sp"
+                                    android:textStyle="bold"
+                                    android:textSize="22sp"
+                                    android:text="English Literature"
+                                    android:textColor="@color/green"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/thumbnail_enggram"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_weight="1">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="190dp"
+                                    android:background="@drawable/shadow_box_for_image"
+                                    android:src="@drawable/category_image_6"/>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:lineHeight="32sp"
+                                    android:textStyle="bold"
+                                    android:textSize="22sp"
+                                    android:text="English Grammar"
+                                    android:textColor="@color/green"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"/>
+                            </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="2">
+
+                        <LinearLayout
+                            android:id="@+id/thumbnail_interactive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="190dp"
+                                app:cardUseCompatPadding="true"
+                                android:background="@drawable/shadow_box_for_image"
+                                android:src="@drawable/category_image_7"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="32sp"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:text="Interactive Learning"
+                                android:textColor="@color/green"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/thumbnail_indianboards"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="190dp"
+                                android:background="@drawable/shadow_box_for_image"
+                                android:src="@drawable/category_image_8"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="32sp"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:text="Indian Boards"
+                                android:textColor="@color/green"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:orientation="vertical"
+                    android:background="#eeeeee"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Games category"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_margin="6dp"
+                    android:id="@+id/main_category_games_text_heading"
+                    android:textColor="@color/black"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/category_grid_lay3"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="2"
+                        android:layout_marginBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="190dp"
+                                app:cardUseCompatPadding="true"
+                                android:background="@drawable/shadow_box_for_image"
+                                android:src="@drawable/category_image_1"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="32sp"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:text="English Literature"
+                                android:textColor="@color/green"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="190dp"
+                                android:background="@drawable/shadow_box_for_image"
+                                android:src="@drawable/category_image_2"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="32sp"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:text="English Grammar"
+                                android:textColor="@color/green"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="2">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="190dp"
+                                app:cardUseCompatPadding="true"
+                                android:background="@drawable/shadow_box_for_image"
+                                android:src="@drawable/category_image_3"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="32sp"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:text="Interactive Learning"
+                                android:textColor="@color/green"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="190dp"
+                                android:background="@drawable/shadow_box_for_image"
+                                android:src="@drawable/category_image_4"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="32sp"
+                                android:textStyle="bold"
+                                android:textSize="22sp"
+                                android:text="Indian Boards"
+                                android:textColor="@color/green"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:background="#eeeeee"
+                android:orientation="vertical"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:background="#ffffff"
+                android:orientation="vertical"/>
+
+            <include layout="@layout/mainfooter_layout"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

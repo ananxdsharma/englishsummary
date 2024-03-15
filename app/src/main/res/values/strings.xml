@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EnglishSummary</string>
+    <string name="english_summary">english summary</string>
+    <string name="search_here">Search here...</string>
+</resources>
