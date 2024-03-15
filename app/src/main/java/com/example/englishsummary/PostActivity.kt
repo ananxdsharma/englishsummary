@@ -2,6 +2,10 @@ package com.example.englishsummary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,9 +18,22 @@ class PostActivity : AppCompatActivity() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
+
+        val  menubutton = findViewById<ImageView>(R.id.toggle_btn)
+        val navmenu = findViewById<LinearLayout>(R.id.menu_option_sec)
+        val Loadingbar=findViewById<ProgressBar>(R.id.pbar)
+
+        menubutton.setOnClickListener {
+            if (navmenu.visibility == View.GONE) {
+                navmenu.visibility = View.VISIBLE
+            } else {
+                navmenu.visibility = View.GONE
+            }
+        }
 
 
         init()
@@ -27,6 +44,14 @@ class PostActivity : AppCompatActivity() {
             recyclerView.layoutManager = LinearLayoutManager(this)
             postAdapter = PostAdapter(it)
             recyclerView.adapter = postAdapter
+        }
+        postViewModel.isLoading.observe(this){
+            if(it){
+                Loadingbar.visibility=View.VISIBLE
+            }
+            else{
+                Loadingbar.visibility=View.INVISIBLE
+            }
         }
 
 

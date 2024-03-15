@@ -12,12 +12,16 @@ class PostViewModel(
     private val repo: PostRepo
 ) : ViewModel() {
     val postLiveData = MutableLiveData<List<Post>>()
+    val isLoading = MutableLiveData<Boolean>(false)
 
     fun fetchPostsDetail() {
         viewModelScope.launch(Dispatchers.IO) {
+
+            isLoading.postValue(true)
             val fetchedPosts = repo.getPosts()
             if(fetchedPosts.isSuccessful){
                 postLiveData.postValue(fetchedPosts.body())
+                isLoading.postValue(true)
             }
         }
     }
