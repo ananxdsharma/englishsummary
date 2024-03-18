@@ -4,11 +4,10 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PostAdapter(private var postList: List<Post>) :
+class PostAdapter(private var postList: List<Post>, private val listener: OnPostItemClickListener) :
     RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
 
     inner class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,13 +33,24 @@ class PostAdapter(private var postList: List<Post>) :
         val currentItem = postList[position]
         holder.postTitle.text = currentItem.title.rendered
         val htmlString = currentItem.excerpt.rendered
+        val htmlStringContent = currentItem.content.rendered
+
         val plainText = Html.fromHtml(htmlString, Html.FROM_HTML_MODE_LEGACY).toString()
+        val plainTextContent=Html.fromHtml(htmlStringContent,Html.FROM_HTML_MODE_LEGACY).toString()
         holder.postSummary.text=plainText
         holder.readMore.text = "Read more"
+
+        holder.itemView.setOnClickListener {
+            listener.onItemClick(position,plainTextContent)
+        }
+
     }
 
 
     override fun getItemCount(): Int {
         return postList.size
     }
+
+
+
 }
