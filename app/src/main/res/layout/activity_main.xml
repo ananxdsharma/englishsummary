@@ -174,7 +174,7 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="190dp"
-                                    app:cardUseCompatPadding="true"
+                                    android:scaleType="centerCrop"
                                     android:background="@drawable/shadow_box_for_image"
                                     android:src="@drawable/category_image_5"/>
 
@@ -200,6 +200,7 @@
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="190dp"
+                                    android:scaleType="centerCrop"
                                     android:background="@drawable/shadow_box_for_image"
                                     android:src="@drawable/category_image_6"/>
 
@@ -234,7 +235,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="190dp"
-                                app:cardUseCompatPadding="true"
+                                android:scaleType="centerCrop"
                                 android:background="@drawable/shadow_box_for_image"
                                 android:src="@drawable/category_image_7"/>
 
@@ -260,6 +261,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="190dp"
+                                android:scaleType="centerCrop"
                                 android:background="@drawable/shadow_box_for_image"
                                 android:src="@drawable/category_image_8"/>
 
@@ -333,7 +335,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="190dp"
-                                app:cardUseCompatPadding="true"
+                                android:scaleType="centerCrop"
                                 android:background="@drawable/shadow_box_for_image"
                                 android:src="@drawable/category_image_1"/>
 
@@ -358,6 +360,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="190dp"
+                                android:scaleType="centerCrop"
                                 android:background="@drawable/shadow_box_for_image"
                                 android:src="@drawable/category_image_2"/>
 
@@ -390,7 +393,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="190dp"
-                                app:cardUseCompatPadding="true"
+                                android:scaleType="centerCrop"
                                 android:background="@drawable/shadow_box_for_image"
                                 android:src="@drawable/category_image_3"/>
 
@@ -415,6 +418,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="190dp"
+                                android:scaleType="centerCrop"
                                 android:background="@drawable/shadow_box_for_image"
                                 android:src="@drawable/category_image_4"/>
 

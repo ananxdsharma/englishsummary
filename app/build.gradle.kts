@@ -67,6 +67,9 @@ dependencies {
 
     // Saved state module for ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0")
+
+    //Material UI
+    implementation ("com.android.support:design:28.0.0")
 //
 //    // Annotation processor
 //    annotationProcessor("androidx.lifecycle:lifecycle-compiler:2.7.0")

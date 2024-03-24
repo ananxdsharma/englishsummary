@@ -52,7 +52,8 @@
 
                         android:id="@+id/topic_img_poetry"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/poetry_card_img" />
 
@@ -95,7 +96,8 @@
 
                         android:id="@+id/topic_img_prose"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/prose_card_img" />
 
@@ -139,7 +141,8 @@
 
                         android:id="@+id/topic_img_drama"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/drama_card_img" />
 
@@ -182,7 +185,8 @@
 
                         android:id="@+id/topic_img_shortstories"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/shortstories_card_img" />
 
@@ -225,7 +229,8 @@
 
                         android:id="@+id/topic_img_novels"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/novel_card_img" />
 
@@ -268,7 +273,8 @@
 
                         android:id="@+id/topic_img_literarytheory"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/literarytheory_card_img" />
 
@@ -311,7 +317,8 @@
 
                         android:id="@+id/topic_img_literarycriticism"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/literarycriticism_card_img" />
 
@@ -354,7 +361,8 @@
 
                         android:id="@+id/topic_img_historyofenglish"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/historyofenglish_card_img" />
 
@@ -397,7 +405,8 @@
 
                         android:id="@+id/topic_img_literaryterms"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="164dp"
+                        android:scaleType="centerCrop"
                         android:contentDescription="image"
                         android:src="@drawable/literaryterms_card_img" />
 
@@ -432,11 +441,12 @@
 
             </LinearLayout>
 
+            <include layout="@layout/mainfooter_layout" />
 
         </LinearLayout>
 
     </ScrollView>
 
-    <include layout="@layout/mainfooter_layout" />
+
 
 </LinearLayout>
