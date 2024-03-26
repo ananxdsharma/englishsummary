@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/dark_blue"
+            android:textColor="@color/black"
             android:text="One Flea Spare Play Summary and Notes in English"
             />
 
@@ -28,7 +28,8 @@
             android:id="@+id/post_summary"
             android:maxLines="4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"    />
+            android:layout_height="wrap_content"
+            android:text="Lorem Ipsum Demo Content"/>
 
         <TextView
             android:id="@+id/read_more"

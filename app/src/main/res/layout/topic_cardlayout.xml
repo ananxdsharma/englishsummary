@@ -12,11 +12,12 @@
         android:layout_margin="10dp">
 
         <ImageView
-
             android:id="@+id/topic_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
             android:contentDescription="image"
+
             android:src="@drawable/poetry_card_img" />
         <TextView
             android:layout_width="wrap_content"
@@ -24,8 +25,7 @@
             android:text="Poetry"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:id="@+id/topic_card_heading"
-            />
+            android:id="@+id/topic_card_heading"/>
         <TextView
             android:id="@+id/topic_card_text"
             android:layout_width="match_parent"
