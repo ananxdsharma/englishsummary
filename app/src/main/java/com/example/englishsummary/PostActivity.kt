@@ -60,8 +60,6 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
             }
         }
 
-
-
     }
     private fun init(){
         repo= PostRepo(RetrofitBuilder.getInstance())

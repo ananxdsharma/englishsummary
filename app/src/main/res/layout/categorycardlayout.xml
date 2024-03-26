@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!--Creating a single block only
+        Use this layout in any activity
+        or create whole activity by hardcode
+        change id for each children elements-->
+
+    <!--Start here-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:id="@+id/archive_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="English Literature"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+<!--            <android.support.design.button.MaterialButton-->
+<!--                style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="See All"-->
+<!--                android:textSize="18dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                android:textColor="@color/dark_blue"-->
+<!--                app:backgroundTint="@android:color/transparent"-->
+<!--                android:textAllCaps="false"-->
+<!--                app:strokeColor="@color/dark_blue"-->
+<!--                app:strokeWidth="2dp"/>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="Revenge Tradegy in English Literature and the influence of Seneca"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:lineHeight="22dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="14dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp"
+                android:background="@drawable/archive_list_border"/>
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="Revenge Tradegy in English Literature and the influence of Seneca"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:lineHeight="22dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="14dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp"
+                android:background="@drawable/archive_list_border"/>
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="Revenge Tradegy in English Literature and the influence of Seneca"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:lineHeight="22dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="14dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp"
+                android:background="@drawable/archive_list_border"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!--End Here-->
+</LinearLayout>

@@ -55,6 +55,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // ViewModel
+    implementation ("com.google.android.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     // ViewModel utilities for Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
@@ -67,27 +68,5 @@ dependencies {
 
     // Saved state module for ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0")
-//
-//    // Annotation processor
-//    annotationProcessor("androidx.lifecycle:lifecycle-compiler:2.7.0")
-//    // alternately - if using Java8, use the following instead of lifecycle-compiler
-//    implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
-//
-//    // optional - helpers for implementing LifecycleOwner in a Service
-//    implementation("androidx.lifecycle:lifecycle-service:2.7.0")
-//
-//    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
-//    implementation("androidx.lifecycle:lifecycle-process:2.7.0")
-//
-//    // optional - ReactiveStreams support for LiveData
-//    implementation("androidx.lifecycle:lifecycle-reactivestreams:2.7.0")
-//
-//    // optional - Test helpers for LiveData
-//    testImplementation("androidx.arch.core:core-testing:2.2.0")
-//
-//    // optional - Test helpers for Lifecycle runtime
-//    testImplementation("androidx.lifecycle:lifecycle-runtime-testing:2.7.0")
 
-//    // Annotation processor
-//    kapt("androidx.lifecycle:lifecycle-compiler:2.7.0")
 }
