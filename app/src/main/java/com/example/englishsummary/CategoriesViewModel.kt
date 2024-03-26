@@ -18,6 +18,8 @@ class CategoriesViewModel(
 
     fun fetchCategoryArchive(categoryType: Int, noOfPost: Int) {
 
+
+
         viewModelScope.launch {
             try {
                 // Execute the synchronous API call in the IO dispatcher
@@ -26,6 +28,8 @@ class CategoriesViewModel(
                 }
                 if (fetchedCategoryArchive.isSuccessful) {
                     categoryLiveData.postValue(fetchedCategoryArchive.body())
+
+
                     Log.i("anand", "the data is coming -- $categoryType")
                 } else {
                     Log.i("anand", "the data is not coming")

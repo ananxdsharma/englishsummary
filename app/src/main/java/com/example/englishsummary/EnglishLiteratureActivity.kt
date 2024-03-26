@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +41,11 @@ class EnglishLiteratureActivity : AppCompatActivity() {
         val listCategoryArchive: MutableList<CategoryArchive> = MutableList(categoryIds.size) {
             CategoryArchive(0, "", "", "") }
         listCategoryArchive.clear()
-        var currentIndex = 0 // Initialize currentIndex to track the current index in listCategoryArchive
+        val categoryResponses =  mutableMapOf<Int, List<Post>>()
+        lateinit var listOfListOfPost:MutableList<List<Post>>
+
+
+
 
         for (categoryId in categoryIds) {
             categoryViewModel.viewModelScope.launch(Dispatchers.IO) {
@@ -51,18 +56,23 @@ class EnglishLiteratureActivity : AppCompatActivity() {
         categoryViewModel.categoryLiveData.observe(this) {
             if (it.isNotEmpty()) {
                 val catid: Int = categoryViewModel.cID
+                categoryResponses[catid]=it
+//                listOfListOfPost[categoryIds.indexOf(catid)]=it
+
                 val title1 = it[0].title.rendered.toString()
                 val title2 = it[1].title.rendered.toString()
                 val title3 = it[2].title.rendered.toString()
 
                 val archiveTitleList = CategoryArchive(catid, title1, title2, title3)
-
+//
                 // Insert the data at the current index in listCategoryArchive
-                listCategoryArchive.add(archiveTitleList)
+               listCategoryArchive[categoryIds.indexOf(catid)]=archiveTitleList
 
                 numResponsesReceived++
-                currentIndex++ // Increment currentIndex to prepare for the next insertion
+                 // Increment currentIndex to prepare for the next insertion
             }
+
+
 
 
             // Update adapter after all data is fetched
