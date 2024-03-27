@@ -14,29 +14,23 @@ class CategoriesViewModel(
     private val repo: PostRepo
 ) : ViewModel() {
     val categoryLiveData = MutableLiveData<List<Post>>()
-    var cID: Int = -1
+     var cID:Int=0
+
 
     fun fetchCategoryArchive(categoryType: Int, noOfPost: Int) {
 
 
 
         viewModelScope.launch {
-            try {
-                // Execute the synchronous API call in the IO dispatcher
-                val fetchedCategoryArchive = withContext(Dispatchers.IO) {
-                    repo.getArchivePosts(categoryType, noOfPost)
-                }
+                 cID=categoryType
+                val fetchedCategoryArchive = repo.getArchivePosts(cID, noOfPost)
                 if (fetchedCategoryArchive.isSuccessful) {
                     categoryLiveData.postValue(fetchedCategoryArchive.body())
-
-
                     Log.i("anand", "the data is coming -- $categoryType")
                 } else {
                     Log.i("anand", "the data is not coming")
                 }
-            } catch (e: Exception) {
-                Log.e("anand", "Error fetching category archive: ${e.message}", e)
             }
         }
     }
-}
+

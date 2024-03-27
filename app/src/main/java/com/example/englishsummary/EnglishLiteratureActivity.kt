@@ -3,6 +3,7 @@ package com.example.englishsummary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -39,24 +40,23 @@ class EnglishLiteratureActivity : AppCompatActivity() {
         var numResponsesReceived = 0
         val categoryIds = intArrayOf(1388, 1378, 1371, 1384, 1369, 1376, 1363)
         val listCategoryArchive: MutableList<CategoryArchive> = MutableList(categoryIds.size) {
-            CategoryArchive(0, "", "", "") }
+            CategoryArchive(0, "", "", "")
+        }
         listCategoryArchive.clear()
-        val categoryResponses =  mutableMapOf<Int, List<Post>>()
-        lateinit var listOfListOfPost:MutableList<List<Post>>
-
-
-
+//        val categoryResponses = mutableMapOf<Int, List<Post>>()
 
         for (categoryId in categoryIds) {
             categoryViewModel.viewModelScope.launch(Dispatchers.IO) {
                 categoryViewModel.fetchCategoryArchive(categoryId, 3)
             }
+
         }
 
         categoryViewModel.categoryLiveData.observe(this) {
+
             if (it.isNotEmpty()) {
                 val catid: Int = categoryViewModel.cID
-                categoryResponses[catid]=it
+//                categoryResponses[catid] = it
 //                listOfListOfPost[categoryIds.indexOf(catid)]=it
 
                 val title1 = it[0].title.rendered.toString()
@@ -66,23 +66,28 @@ class EnglishLiteratureActivity : AppCompatActivity() {
                 val archiveTitleList = CategoryArchive(catid, title1, title2, title3)
 //
                 // Insert the data at the current index in listCategoryArchive
-               listCategoryArchive[categoryIds.indexOf(catid)]=archiveTitleList
+//                listCategoryArchive[categoryIds.indexOf(catid)] = archiveTitleList
+                listCategoryArchive.add(archiveTitleList)
 
                 numResponsesReceived++
-                 // Increment currentIndex to prepare for the next insertion
-            }
+                Log.i("shivam", "$numResponsesReceived")
 
 
-
-
-            // Update adapter after all data is fetched
-            if (numResponsesReceived == categoryIds.size) { // Check if all data is loaded
-                val recyclerViewCategory = findViewById<RecyclerView>(R.id.rvCategory)
-                recyclerViewCategory.layoutManager = LinearLayoutManager(this)
-                val categoryAdapter = CategoryAdapter(listCategoryArchive)
-                recyclerViewCategory.adapter = categoryAdapter
+                // Increment currentIndex to prepare for the next insertion
+            } else {
+                Log.i("anand", "the it is empty")
             }
         }
+
+
+        // Update adapter after all data is fetched
+        if (numResponsesReceived == categoryIds.size) { // Check if all data is loaded
+            val recyclerViewCategory = findViewById<RecyclerView>(R.id.rvCategory)
+            recyclerViewCategory.layoutManager = LinearLayoutManager(this)
+            categoryAdapter = CategoryAdapter(listCategoryArchive)
+            recyclerViewCategory.adapter = categoryAdapter
+        }
+
 
 // Call fetchCategoryArchive for each category ID in a background thread (optional)
 
@@ -94,6 +99,11 @@ class EnglishLiteratureActivity : AppCompatActivity() {
             }
         }
     }
+
+//    suspend fun getArchiveListPost(categoryId: Int) {
+//
+//
+//    }
 
 
 //        click functionalities below

@@ -12,8 +12,8 @@ interface PostApiService {
     ): Response<List<Post>>
 
     @GET("wp/v2/posts?_embed&categories=id,excerpt,title,link,content&page=1&per_page=3")
-     fun getArchivePosts(
+     suspend fun getArchivePosts(
         @Query("categories") kp: Int,
         @Query("per_page") postcount: Int
-    ): Call<List<Post>>
+    ): Response<List<Post>>
 }
