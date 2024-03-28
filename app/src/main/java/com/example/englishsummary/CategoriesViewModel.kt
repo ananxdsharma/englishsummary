@@ -5,32 +5,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 class CategoriesViewModel(
     private val repo: PostRepo
 ) : ViewModel() {
     val categoryLiveData = MutableLiveData<List<Post>>()
-     var cID:Int=0
+    private val _cID = MutableLiveData<Int>()
+    var cID: Int = 0
 
 
-    fun fetchCategoryArchive(categoryType: Int, noOfPost: Int) {
 
 
-
+    suspend fun fetchCategoryArchive(categoryType: Int, noOfPost: Int) {
         viewModelScope.launch {
-                 cID=categoryType
-                val fetchedCategoryArchive = repo.getArchivePosts(cID, noOfPost)
-                if (fetchedCategoryArchive.isSuccessful) {
-                    categoryLiveData.postValue(fetchedCategoryArchive.body())
-                    Log.i("anand", "the data is coming -- $categoryType")
-                } else {
-                    Log.i("anand", "the data is not coming")
-                }
+           cID=categoryType
+            Log.i("kung", " in viewmodel $categoryType")
+            val fetchedCategoryArchive = repo.getArchivePosts(categoryType, noOfPost)
+            if (fetchedCategoryArchive.isSuccessful) {
+                categoryLiveData.postValue(fetchedCategoryArchive.body())
             }
         }
+
     }
+}
+
 

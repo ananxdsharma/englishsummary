@@ -34,6 +34,7 @@ class PostAdapter(private var postList: List<Post>, private val listener: OnPost
         holder.postTitle.text = currentItem.title.rendered
         val htmlString = currentItem.excerpt.rendered
         val htmlStringContent = currentItem.content.rendered
+        val linkOfSite=currentItem.link
 
         val plainText = Html.fromHtml(htmlString, Html.FROM_HTML_MODE_LEGACY).toString()
         val plainTextContent=Html.fromHtml(htmlStringContent,Html.FROM_HTML_MODE_LEGACY).toString()
@@ -41,9 +42,8 @@ class PostAdapter(private var postList: List<Post>, private val listener: OnPost
         holder.readMore.text = "Read more"
 
         holder.itemView.setOnClickListener {
-            listener.onItemClick(position,plainTextContent)
+            listener.onItemClick(position,linkOfSite)
         }
-
     }
 
 

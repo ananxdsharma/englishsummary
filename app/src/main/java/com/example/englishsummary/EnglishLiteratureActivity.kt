@@ -1,27 +1,29 @@
 package com.example.englishsummary
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class EnglishLiteratureActivity : AppCompatActivity() {
+ class EnglishLiteratureActivity : AppCompatActivity(), OnSeeAllButtonClickListener {
 
     private lateinit var categoryViewModel: CategoriesViewModel
     private lateinit var repo: PostRepo
     private lateinit var categoryViewModelFactory: CategoryViewModelFactory
-    private var categoryAdapter = CategoryAdapter(mutableListOf())
+    private  var catid:Int=0
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,65 +33,46 @@ class EnglishLiteratureActivity : AppCompatActivity() {
 
         val menubutton = findViewById<ImageView>(R.id.toggle_btn)
         val navmenu = findViewById<LinearLayout>(R.id.menu_option_sec)
-
-
         repo = PostRepo(RetrofitBuilder.getInstance())
+        var categoryAdapter: CategoryAdapter
         categoryViewModelFactory = CategoryViewModelFactory(repo)
         categoryViewModel =
             ViewModelProvider(this, categoryViewModelFactory)[CategoriesViewModel::class.java]
         var numResponsesReceived = 0
         val categoryIds = intArrayOf(1388, 1378, 1371, 1384, 1369, 1376, 1363)
-        val listCategoryArchive: MutableList<CategoryArchive> = MutableList(categoryIds.size) {
-            CategoryArchive(0, "", "", "")
-        }
-        listCategoryArchive.clear()
-//        val categoryResponses = mutableMapOf<Int, List<Post>>()
+        val listCategoryArchive: MutableList<CategoryArchive> = mutableListOf()
+
 
         for (categoryId in categoryIds) {
             categoryViewModel.viewModelScope.launch(Dispatchers.IO) {
                 categoryViewModel.fetchCategoryArchive(categoryId, 3)
             }
-
         }
 
-        categoryViewModel.categoryLiveData.observe(this) {
+        listCategoryArchive.clear()
 
-            if (it.isNotEmpty()) {
-                val catid: Int = categoryViewModel.cID
-//                categoryResponses[catid] = it
-//                listOfListOfPost[categoryIds.indexOf(catid)]=it
-
-                val title1 = it[0].title.rendered.toString()
-                val title2 = it[1].title.rendered.toString()
-                val title3 = it[2].title.rendered.toString()
-
-                val archiveTitleList = CategoryArchive(catid, title1, title2, title3)
-//
-                // Insert the data at the current index in listCategoryArchive
-//                listCategoryArchive[categoryIds.indexOf(catid)] = archiveTitleList
-                listCategoryArchive.add(archiveTitleList)
-
-                numResponsesReceived++
-                Log.i("shivam", "$numResponsesReceived")
+        categoryViewModel.categoryLiveData.observe(this) { posts ->
+            catid=categoryViewModel.cID
+            val title1 = posts[0].title.rendered
+            val title2 = posts[1].title.rendered
+            val title3 = posts[2].title.rendered
+            val archiveTitleList = CategoryArchive(catid, title1, title2, title3)
+            listCategoryArchive.add(archiveTitleList)
 
 
-                // Increment currentIndex to prepare for the next insertion
-            } else {
-                Log.i("anand", "the it is empty")
+            // Insert the data at the current index in listCategoryArchive
+
+            numResponsesReceived++
+
+//            Log.i("shivam", "$numResponsesReceived  $catid $archiveTitleList ")
+
+            if (numResponsesReceived == categoryIds.size) { // Check if all data is loaded
+                val recyclerViewCategory = findViewById<RecyclerView>(R.id.rvCategory)
+                recyclerViewCategory.layoutManager = LinearLayoutManager(this)
+                categoryAdapter = CategoryAdapter(listCategoryArchive, this)
+                recyclerViewCategory.adapter = categoryAdapter
             }
         }
-
-
-        // Update adapter after all data is fetched
-        if (numResponsesReceived == categoryIds.size) { // Check if all data is loaded
-            val recyclerViewCategory = findViewById<RecyclerView>(R.id.rvCategory)
-            recyclerViewCategory.layoutManager = LinearLayoutManager(this)
-            categoryAdapter = CategoryAdapter(listCategoryArchive)
-            recyclerViewCategory.adapter = categoryAdapter
-        }
-
-
-// Call fetchCategoryArchive for each category ID in a background thread (optional)
 
         menubutton.setOnClickListener {
             if (navmenu.visibility == View.GONE) {
@@ -98,7 +81,27 @@ class EnglishLiteratureActivity : AppCompatActivity() {
                 navmenu.visibility = View.GONE
             }
         }
+
     }
+
+
+    // Update adapter after all data is fetched
+
+
+    // Call fetchCategoryArchive for each category ID in a background thread (optional)
+    override fun onSeeAllClick(cID: Int) {
+        val intent = Intent(this, PostActivity::class.java)
+        Log.i("kunj", "the value in EngLit $cID")
+        intent.putExtra("passID", cID)
+        startActivity(intent)
+    }
+     fun changeCatId(para:Int){
+         catid=para
+     }
+
+
+}
+
 
 //    suspend fun getArchiveListPost(categoryId: Int) {
 //
@@ -145,7 +148,7 @@ class EnglishLiteratureActivity : AppCompatActivity() {
 //        }
 
 
-//    override fun onShowMoreClick(parameter: Int) {
+//    private fun onShowMoreClick(parameter: Int) {
 //        // Handle the click event here
 //        // Start the other activity and pass the parameter
 //        val intent = Intent(this, PostActivity::class.java)
@@ -159,4 +162,4 @@ class EnglishLiteratureActivity : AppCompatActivity() {
 //    }
 
 
-}
+

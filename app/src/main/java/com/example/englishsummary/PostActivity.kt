@@ -2,6 +2,7 @@ package com.example.englishsummary
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -24,14 +25,15 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
-        val intent = getIntent()
+        val intent = intent
 
         // Retrieve the parameter value using the key
-        val parameterValue = intent.getIntExtra("KeyParameter", -1)
+        val parameterValue = intent.getIntExtra("passID", -1)
+        Log.i("kunj","the value in PostActivity $parameterValue")
 
         val  menubutton = findViewById<ImageView>(R.id.toggle_btn)
         val navmenu = findViewById<LinearLayout>(R.id.menu_option_sec)
-        val Loadingbar=findViewById<ProgressBar>(R.id.pbar)
+        val loadingbar=findViewById<ProgressBar>(R.id.pbar)
 
         menubutton.setOnClickListener {
             if (navmenu.visibility == View.GONE) {
@@ -53,13 +55,12 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
         }
         postViewModel.isLoading.observe(this){
             if(it){
-                Loadingbar.visibility=View.VISIBLE
+                loadingbar.visibility=View.VISIBLE
             }
             else{
-                Loadingbar.visibility=View.INVISIBLE
+                loadingbar.visibility=View.INVISIBLE
             }
         }
-
     }
     private fun init(){
         repo= PostRepo(RetrofitBuilder.getInstance())
@@ -67,9 +68,9 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
         postViewModel= ViewModelProvider(this,postViewModelFactory)[PostViewModel::class.java]
     }
 
-    override fun onItemClick(position: Int, contentString: String) {
+    override fun onItemClick(position: Int, link: String) {
         val intent = Intent(this, ContentDetailActivity::class.java)
-        intent.putExtra("contentString", contentString)
+        intent.putExtra("link", link)
         startActivity(intent)
     }
 }
