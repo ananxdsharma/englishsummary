@@ -1,6 +1,7 @@
 package com.example.englishsummary
 
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +43,9 @@ class PostAdapter(private var postList: List<Post>, private val listener: OnPost
         holder.readMore.text = "Read more"
 
         holder.itemView.setOnClickListener {
-            listener.onItemClick(position,linkOfSite)
+            Log.i("jacob","$linkOfSite in adapter")
+            listener.onItemClick(linkOfSite)
+
         }
     }
 

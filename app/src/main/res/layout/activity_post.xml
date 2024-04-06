@@ -49,9 +49,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_category_frame_text_heading">
 
+
+
+
 <!--        <include layout="@layout/mainfooter_layout" />-->
 
     </androidx.recyclerview.widget.RecyclerView>
+
 
 
 

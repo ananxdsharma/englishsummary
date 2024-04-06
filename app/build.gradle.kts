@@ -56,7 +56,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // ViewModel
-    implementation ("com.google.android.material:material:1.3.0")
+    implementation ("com.google.android.material:material:1.11.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     // ViewModel utilities for Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
@@ -71,10 +71,16 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0")
 
 
+    implementation ("androidx.room:room-ktx:2.6.1")
+
+
     implementation ("androidx.room:room-runtime:2.6.1")
     kapt ("androidx.room:room-compiler:2.6.1") // For Kotlin use kapt instead of annotationProcessor
 
 // optional - RxJava support for Room
     implementation ("androidx.room:room-rxjava2:2.6.1")
+
+    implementation ("android.arch.persistence.room:runtime:1.1.1")
+    annotationProcessor ("android.arch.persistence.room:compiler:1.1.1")
 
 }

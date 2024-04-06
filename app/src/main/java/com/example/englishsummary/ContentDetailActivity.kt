@@ -2,6 +2,7 @@ package com.example.englishsummary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.webkit.WebSettings
 import android.webkit.WebView
 
@@ -14,7 +15,10 @@ class ContentDetailActivity : AppCompatActivity() {
         val linkOfPost = intent.getStringExtra("link")
         val webSettings: WebSettings = contentView.settings
         webSettings.javaScriptEnabled = true
+        Log.i("jacob","$linkOfPost in activity")
 
-        contentView.loadUrl("linkOfPost")
+        if (linkOfPost != null) {
+            contentView.loadUrl(linkOfPost)
+        }
     }
 }

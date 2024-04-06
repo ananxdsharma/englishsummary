@@ -68,8 +68,10 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
         postViewModel= ViewModelProvider(this,postViewModelFactory)[PostViewModel::class.java]
     }
 
-    override fun onItemClick(position: Int, link: String) {
+    override fun onItemClick(link: String) {
         val intent = Intent(this, ContentDetailActivity::class.java)
+        Log.i("jacob","$link in activity")
+
         intent.putExtra("link", link)
         startActivity(intent)
     }

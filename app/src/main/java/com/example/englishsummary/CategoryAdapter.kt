@@ -12,6 +12,7 @@ class CategoryAdapter(private var titleList: List<CategoryArchive>,private val l
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val archiveHeading:TextView=itemView.findViewById(R.id.archive_heading)
         val archive1: TextView = itemView.findViewById(R.id.tv1)
         val archive2: TextView = itemView.findViewById(R.id.tv2)
         val archive3: TextView = itemView.findViewById(R.id.tv3)
@@ -41,7 +42,6 @@ class CategoryAdapter(private var titleList: List<CategoryArchive>,private val l
         holder.btn.setOnClickListener{
             listener.onSeeAllClick(passID)
         }
-
     }
 
     override fun getItemCount(): Int {

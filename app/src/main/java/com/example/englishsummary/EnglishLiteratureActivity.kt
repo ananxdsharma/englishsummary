@@ -8,6 +8,9 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,70 +22,100 @@ import kotlinx.coroutines.launch
 
  class EnglishLiteratureActivity : AppCompatActivity(), OnSeeAllButtonClickListener {
 
-    private lateinit var categoryViewModel: CategoriesViewModel
-    private lateinit var repo: PostRepo
-    private lateinit var categoryViewModelFactory: CategoryViewModelFactory
-    private  var catid:Int=0
+     private lateinit var categoryViewModel: CategoriesViewModel
+     private lateinit var repo: PostRepo
+     private lateinit var categoryViewModelFactory: CategoryViewModelFactory
+     private var catid: Int = 0
 
 
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_english_literature)
+         val loadingbar = findViewById<ProgressBar>(R.id.pbar)
+         loadingbar.visibility = View.VISIBLE
+         val categoryActivityHeading = findViewById<TextView>(R.id.main_category_frame_text_heading)
+         val intent = intent
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_english_literature)
+         // Retrieve the parameter value using the key
+         val categoryCode = intent.getIntExtra("passID", -1)
+         if (categoryCode == 1) {
+             categoryActivityHeading.text = "English Literature"
+         } else {
+             categoryActivityHeading.text = "English Grammer"
+         }
+         val result: IntArray = when (categoryCode) {
+             1 -> {
+                 intArrayOf(1388, 1378, 1371, 1384, 1369, 1376, 1363)
+             }
 
+             2 -> {
+                 intArrayOf(1365, 1408, 1430, 1412)
+             }
 
-        val menubutton = findViewById<ImageView>(R.id.toggle_btn)
-        val navmenu = findViewById<LinearLayout>(R.id.menu_option_sec)
-        repo = PostRepo(RetrofitBuilder.getInstance())
-        var categoryAdapter: CategoryAdapter
-        categoryViewModelFactory = CategoryViewModelFactory(repo)
-        categoryViewModel =
-            ViewModelProvider(this, categoryViewModelFactory)[CategoriesViewModel::class.java]
-        var numResponsesReceived = 0
-        val categoryIds = intArrayOf(1388, 1378, 1371, 1384, 1369, 1376, 1363)
-        val listCategoryArchive: MutableList<CategoryArchive> = mutableListOf()
-
-
-        for (categoryId in categoryIds) {
-            categoryViewModel.viewModelScope.launch(Dispatchers.IO) {
-                categoryViewModel.fetchCategoryArchive(categoryId, 3)
-            }
-        }
-
-        listCategoryArchive.clear()
-
-        categoryViewModel.categoryLiveData.observe(this) { posts ->
-            catid=categoryViewModel.cID
-            val title1 = posts[0].title.rendered
-            val title2 = posts[1].title.rendered
-            val title3 = posts[2].title.rendered
-            val archiveTitleList = CategoryArchive(catid, title1, title2, title3)
-            listCategoryArchive.add(archiveTitleList)
+             else -> intArrayOf(0)
+         }
 
 
-            // Insert the data at the current index in listCategoryArchive
+         val menubutton = findViewById<ImageView>(R.id.toggle_btn)
+         val navmenu = findViewById<LinearLayout>(R.id.menu_option_sec)
+         repo = PostRepo(RetrofitBuilder.getInstance())
+         var categoryAdapter: CategoryAdapter
+         categoryViewModelFactory = CategoryViewModelFactory(repo)
+         categoryViewModel =
+             ViewModelProvider(this, categoryViewModelFactory)[CategoriesViewModel::class.java]
+         var numResponsesReceived = 0
+         val categoryIds = result
+         val listCategoryArchive: MutableList<CategoryArchive> = mutableListOf()
 
-            numResponsesReceived++
+
+         for (categoryId in categoryIds) {
+             categoryViewModel.viewModelScope.launch(Dispatchers.IO) {
+                 categoryViewModel.fetchCategoryArchive(categoryId, 3)
+             }
+         }
+
+         listCategoryArchive.clear()
+
+         categoryViewModel.categoryArchiveTitleListLiveData.observe(this) {
+
+             // Insert the data at the current index in listCategoryArchive
+             val arch = it
+             listCategoryArchive.add(arch)
+
+             numResponsesReceived++
 
 //            Log.i("shivam", "$numResponsesReceived  $catid $archiveTitleList ")
 
-            if (numResponsesReceived == categoryIds.size) { // Check if all data is loaded
-                val recyclerViewCategory = findViewById<RecyclerView>(R.id.rvCategory)
-                recyclerViewCategory.layoutManager = LinearLayoutManager(this)
-                categoryAdapter = CategoryAdapter(listCategoryArchive, this)
-                recyclerViewCategory.adapter = categoryAdapter
-            }
-        }
+             if (numResponsesReceived == categoryIds.size) { // Check if all data is loaded
+                 val recyclerViewCategory = findViewById<RecyclerView>(R.id.rvCategory)
+                 recyclerViewCategory.layoutManager = LinearLayoutManager(this)
+                 categoryAdapter = CategoryAdapter(listCategoryArchive, this)
+                 recyclerViewCategory.adapter = categoryAdapter
 
-        menubutton.setOnClickListener {
-            if (navmenu.visibility == View.GONE) {
-                navmenu.visibility = View.VISIBLE
-            } else {
-                navmenu.visibility = View.GONE
-            }
-        }
+                 // Loading bar concept
 
-    }
+                 categoryViewModel.isLoading.observe(this) {
+                     if (it) {
+                         loadingbar.visibility = View.VISIBLE
+                     } else {
+                         loadingbar.visibility = View.INVISIBLE
+                     }
+                 }
+             }
+
+         }
+
+
+         menubutton.setOnClickListener {
+             if (navmenu.visibility == View.GONE) {
+                 navmenu.visibility = View.VISIBLE
+             } else {
+                 navmenu.visibility = View.GONE
+             }
+         }
+
+     }
+
 
 
     // Update adapter after all data is fetched
@@ -98,8 +131,6 @@ import kotlinx.coroutines.launch
      fun changeCatId(para:Int){
          catid=para
      }
-
-
 }
 
 
