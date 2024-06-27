@@ -15,9 +15,11 @@
         android:theme="@style/Theme.EnglishSummary"
         tools:targetApi="31">
         <activity
+            android:name=".IndianBoardsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ContentDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".PostActivity"
             android:exported="false" />

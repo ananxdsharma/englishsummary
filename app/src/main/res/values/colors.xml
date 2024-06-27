@@ -8,5 +8,9 @@
     <color name="greylight">#C4C4C4</color>
     <color name="blue_light">#90CAF9</color>
     <color name="dark_blue">#0070F3</color>
+    <color name="colorPrimary">#d4bf79</color>
+    <color name="colorPrimaryDark">#a28834</color>
+    <color name="colorAccent">#0070f3</color>
+    
 
 </resources>

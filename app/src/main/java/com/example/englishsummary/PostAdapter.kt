@@ -45,15 +45,9 @@ class PostAdapter(private var postList: List<Post>, private val listener: OnPost
         holder.itemView.setOnClickListener {
             Log.i("jacob","$linkOfSite in adapter")
             listener.onItemClick(linkOfSite)
-
         }
     }
-
-
     override fun getItemCount(): Int {
         return postList.size
     }
-
-
-
 }

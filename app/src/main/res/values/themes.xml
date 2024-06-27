@@ -5,5 +5,11 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.EnglishSummary" parent="Base.Theme.EnglishSummary" />
+    <style name="Theme.EnglishSummary" parent="Base.Theme.EnglishSummary" >
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
+    </style>
 </resources>

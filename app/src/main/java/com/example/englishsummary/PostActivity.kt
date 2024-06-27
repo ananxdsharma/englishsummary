@@ -19,9 +19,6 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
     private lateinit var postAdapter: PostAdapter
 
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
@@ -42,7 +39,6 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
                 navmenu.visibility = View.GONE
             }
         }
-
 
         init()
 
