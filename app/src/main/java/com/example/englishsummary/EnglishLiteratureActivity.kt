@@ -15,8 +15,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.Deferred
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 
@@ -67,12 +70,20 @@ import kotlinx.coroutines.launch
          val categoryIds = result
          val listCategoryArchive: MutableList<CategoryArchive> = mutableListOf()
 
+            // the code block is still under testing phase
 
-         for (categoryId in categoryIds) {
              categoryViewModel.viewModelScope.launch(Dispatchers.IO) {
-                 categoryViewModel.fetchCategoryArchive(categoryId, 3)
+
+                 val deferredResults = categoryIds.map { categoryId ->
+                     async(Dispatchers.IO) {
+                         categoryViewModel.fetchCategoryArchive(categoryId, 3)
+                     }
+                 }
+                 val results = deferredResults.awaitAll()
              }
-         }
+
+
+
 
          listCategoryArchive.clear()
 

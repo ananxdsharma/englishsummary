@@ -84,7 +84,7 @@
                         android:textColor="@color/green" />
 
                     <TextView
-                        android:id="@+id/quiz_ques"
+                        android:id="@+id/quiz_question"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -93,6 +93,7 @@
                         android:textColor="@color/black" />
 
                     <RadioGroup
+
                         android:id="@+id/optionsRadioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -123,6 +124,15 @@
                             android:layout_height="wrap_content"
                             android:text="Madrid" />
                     </RadioGroup>
+
+                    <Button
+                        android:id="@+id/next_question_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+                        android:text="Next"
+                        android:visibility="gone"
+                        android:textColor="@color/green"/>
 
                 </LinearLayout>
             </LinearLayout>

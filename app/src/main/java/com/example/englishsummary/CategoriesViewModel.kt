@@ -13,6 +13,8 @@ class CategoriesViewModel(
     private val categoryLiveData = MutableLiveData<List<Post>>()
     val categoryArchiveTitleListLiveData = MutableLiveData<CategoryArchive>()
     val isLoading = MutableLiveData<Boolean>(false)
+
+
     fun fetchCategoryArchive(categoryType: Int, noOfPost: Int) {
         viewModelScope.launch (Dispatchers.IO){
             isLoading.postValue(true)

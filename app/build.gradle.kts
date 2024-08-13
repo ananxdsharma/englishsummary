@@ -59,6 +59,7 @@ dependencies {
     // ViewModel
     implementation ("com.google.android.material:material:1.11.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation ("org.jsoup:jsoup:1.17.2")
     // ViewModel utilities for Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     // LiveData
