@@ -9,11 +9,11 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class PostLoaderAdapter: LoadStateAdapter<PostLoaderAdapter.LoaderViewHolder>() {
+class PostLoaderAdapter:LoadStateAdapter<PostLoaderAdapter.LoaderViewHolder>() {
 
-    class LoaderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class LoaderViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val progressBar=itemView.findViewById<ProgressBar>(R.id.progress_bar)
-        fun bind(loadState: LoadState){
+        fun bind(loadState:LoadState){
             progressBar.isVisible=loadState is LoadState.Loading
         }
 
@@ -25,7 +25,7 @@ class PostLoaderAdapter: LoadStateAdapter<PostLoaderAdapter.LoaderViewHolder>() 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoaderViewHolder {
-        val view= LayoutInflater.from(parent.context).inflate(R.layout.loader_item,parent,false)
+        val view=LayoutInflater.from(parent.context).inflate(R.layout.loader_item,parent,false)
         return LoaderViewHolder(view)
     }
 }
