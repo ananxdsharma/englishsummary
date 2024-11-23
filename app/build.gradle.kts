@@ -85,4 +85,11 @@ dependencies {
     implementation ("android.arch.persistence.room:runtime:1.1.1")
     annotationProcessor ("android.arch.persistence.room:compiler:1.1.1")
 
+    //paging library
+    val paging_version = "3.3.4"
+
+    implementation("androidx.paging:paging-runtime:$paging_version")
+
+    // alternatively - without Android dependencies for tests
+
 }

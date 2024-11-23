@@ -1,28 +1,29 @@
 package com.example.englishsummary
 //import androidx.lifecycle.LiveData
 //import androidx.lifecycle.MutableLiveData
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+
 
 
 class PostViewModel(
     private val repo: PostRepo
 ) : ViewModel() {
-    val postLiveData = MutableLiveData<List<Post>>()
-    val isLoading = MutableLiveData<Boolean>(false)
+    var _listLiveData = MutableLiveData<PagingData<Post>>()
+    val listLiveData: LiveData<PagingData<Post>> = _listLiveData
 
-    fun fetchPostsDetail(parameterValue:Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-
-            isLoading.postValue(true)
-            val fetchedPosts = repo.getPosts(parameterValue)
-            if(fetchedPosts.isSuccessful){
-                postLiveData.postValue(fetchedPosts.body())
-                isLoading.postValue(false)
-            }
+    fun fetchPostsDetail(categoryCode: Int) {
+        viewModelScope.launch {
+            val fetchedPosts = repo.getPosts(categoryCode).cachedIn(viewModelScope)
+            Log.i("meeena","$fetchedPosts in viewmodel")
+            _listLiveData = fetchedPosts as MutableLiveData<PagingData<Post>>
         }
     }
 }

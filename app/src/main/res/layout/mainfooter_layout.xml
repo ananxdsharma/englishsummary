@@ -39,38 +39,38 @@
             android:layout_gravity="center"
             android:layout_margin="16dp">
 
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:src="@drawable/whatsapp"
-                android:background="@drawable/icon_background"
-                android:padding="12dp"
-                android:layout_margin="8dp"/>
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:src="@drawable/youtube"
-                android:background="@drawable/icon_background"
-                android:padding="8dp"
-                android:layout_margin="8dp"/>
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:src="@drawable/instagram"
-                android:background="@drawable/icon_background"
-                android:padding="12dp"
-                android:layout_margin="8dp"/>
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:src="@drawable/facebook"
-                android:background="@drawable/icon_background"
-                android:padding="12dp"
-                android:layout_margin="8dp"/>
+<!--            <ImageView-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/whatsapp"-->
+<!--                android:background="@drawable/icon_background"-->
+<!--                android:padding="12dp"-->
+<!--                android:layout_margin="8dp"/>-->
+<!--            <ImageView-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/youtube"-->
+<!--                android:background="@drawable/icon_background"-->
+<!--                android:padding="8dp"-->
+<!--                android:layout_margin="8dp"/>-->
+<!--            <ImageView-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/instagram"-->
+<!--                android:background="@drawable/icon_background"-->
+<!--                android:padding="12dp"-->
+<!--                android:layout_margin="8dp"/>-->
+<!--            <ImageView-->
+<!--                android:layout_width="48dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:src="@drawable/facebook"-->
+<!--                android:background="@drawable/icon_background"-->
+<!--                android:padding="12dp"-->
+<!--                android:layout_margin="8dp"/>-->
 
 
 

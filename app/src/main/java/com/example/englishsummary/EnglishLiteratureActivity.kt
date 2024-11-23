@@ -59,6 +59,9 @@ import kotlinx.coroutines.launch
          }
 
 
+         sideMenuImplementation()
+
+
          val menubutton = findViewById<ImageView>(R.id.toggle_btn)
          val navmenu = findViewById<LinearLayout>(R.id.menu_option_sec)
          repo = PostRepo(RetrofitBuilder.getInstance())
@@ -72,7 +75,7 @@ import kotlinx.coroutines.launch
 
             // the code block is still under testing phase
 
-             categoryViewModel.viewModelScope.launch(Dispatchers.IO) {
+         categoryViewModel.viewModelScope.launch(Dispatchers.IO) {
 
                  val deferredResults = categoryIds.map { categoryId ->
                      async(Dispatchers.IO) {
@@ -80,7 +83,7 @@ import kotlinx.coroutines.launch
                      }
                  }
                  val results = deferredResults.awaitAll()
-             }
+         }
 
 
 
@@ -125,11 +128,46 @@ import kotlinx.coroutines.launch
              }
          }
 
+
+
+
+
+     }
+
+
+     private fun sideMenuImplementation(){
+         val homeOption =findViewById<TextView>(R.id.menu_option_home)
+         val menuOptionEngLit = findViewById<TextView>(R.id.menu_option_englit)
+         val menuOptionEngGram = findViewById<TextView>(R.id.menu_option_enggram)
+         val menuOptionIndianBoards = findViewById<TextView>(R.id.menu_option_indianboards)
+
+
+         menuOptionEngLit.setOnClickListener {
+             navigateToCategory(1)
+         }
+
+         menuOptionEngLit.setOnClickListener {
+             val intent=Intent(this,MainActivity::class.java)
+             startActivity(intent)
+         }
+
+         menuOptionEngGram.setOnClickListener {
+             navigateToCategory(2)
+         }
+
+         menuOptionIndianBoards.setOnClickListener {
+             navigateToCategory(3)
+         }
+     }
+     private fun navigateToCategory(categoryCode: Int) {
+         val intent = Intent(this, EnglishLiteratureActivity::class.java)
+         intent.putExtra("passID", categoryCode)
+         startActivity(intent)
      }
 
 
 
-    // Update adapter after all data is fetched
+
 
 
     // Call fetchCategoryArchive for each category ID in a background thread (optional)
@@ -151,43 +189,7 @@ import kotlinx.coroutines.launch
 //    }
 
 
-//        click functionalities below
 
-//        val topic_drama = findViewById<LinearLayout>(R.id.drama_card)
-//        topic_drama.setOnClickListener {
-//            val intent = Intent(this, PostActivity::class.java)
-//            startActivity(intent)
-//        }
-
-//        proseShowMoreText.setOnClickListener {
-//            handleShowMoreClick(1376) // Pass the appropriate integer parameter for this layout
-//        }
-//        dramaShowMoreText.setOnClickListener {
-//            handleShowMoreClick(1369) // Pass the appropriate integer parameter for this layout
-//        }
-//        shortstoriesShowMoreText.setOnClickListener {
-//            handleShowMoreClick(1384) // Pass the appropriate integer parameter for this layout
-//        }
-//        novelsShowMoreText.setOnClickListener {
-//            handleShowMoreClick(1371) // Pass the appropriate integer parameter for this layout
-//        }
-//        lit_theoryShowMoreText.setOnClickListener {
-//            handleShowMoreClick(1378) // Pass the appropriate integer parameter for this layout
-//        }
-//        lit_criticismShowMoreText.setOnClickListener {
-//
-//            handleShowMoreClick(1388) // Pass the appropriate integer parameter for this layout
-//        }
-//        historyofenglishShowMoreText.setOnClickListener {
-////            handleShowMoreClick(13) // Pass the appropriate integer parameter for this layout
-//            Toast.makeText(this, "Currently Not Available", Toast.LENGTH_SHORT).show()
-//        }
-//        literarytermsShowMoreText.setOnClickListener {
-//
-////            handleShowMoreClick(13) // Pass the appropriate integer parameter for this layout
-//            Toast.makeText(this, "Currently Not Available", Toast.LENGTH_SHORT).show()
-//
-//        }
 
 
 //    private fun onShowMoreClick(parameter: Int) {

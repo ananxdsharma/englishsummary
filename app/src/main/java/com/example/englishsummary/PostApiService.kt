@@ -6,9 +6,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PostApiService {
-    @GET("wp/v2/posts?_embed&fields=id,excerpt,title,link,content")
+    @GET("wp/v2/posts?_embed&&categories=1369&&_fields=id,excerpt,title,link,content&&page=1&&per_page=5")
     suspend fun getPosts(
-        @Query("categories") kp: Int
+        @Query("categories") kp: Int,
+        @Query("page") pageNo:Int
     ): Response<List<Post>>
 
     @GET("wp/v2/posts?_embed&categories=id,excerpt,title,link,content&page=1&per_page=3")

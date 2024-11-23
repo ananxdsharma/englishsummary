@@ -71,12 +71,12 @@
                 <!--             />-->
 
 
-                <ImageView
-                    android:id="@+id/search_icon"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/baseline_search_24"
-                    android:layout_gravity="center"/>
+<!--                <ImageView-->
+<!--                    android:id="@+id/search_icon"-->
+<!--                    android:layout_width="32dp"-->
+<!--                    android:layout_height="32dp"-->
+<!--                    android:src="@drawable/baseline_search_24"-->
+<!--                    android:layout_gravity="center"/>-->
 
                 <ImageView
                     android:layout_width="40dp"

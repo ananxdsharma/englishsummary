@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +17,8 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
     private lateinit var postViewModel: PostViewModel
     private lateinit var repo: PostRepo
     private lateinit var postViewModelFactory: PostViewModelFactory
-    private lateinit var postAdapter: PostAdapter
+    private lateinit var postAdapter: PostPagingAdapter
+    private lateinit var recyclerView: RecyclerView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,23 +42,30 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
             }
         }
 
-        init()
+//        init()
+
+        recyclerView = findViewById(R.id.post_rv)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+
+
+        val repo = PostRepo(RetrofitBuilder.getInstance())
+        val postViewModelFactory = PostViewModelFactory(repo)
+        postViewModel = ViewModelProvider(this, postViewModelFactory).get(PostViewModel::class.java)
+
+        postAdapter = PostPagingAdapter(this)
+        recyclerView.adapter = postAdapter.withLoadStateHeaderAndFooter(
+            header = PostLoaderAdapter(),
+            footer = PostLoaderAdapter()
+        )
 
         postViewModel.fetchPostsDetail(parameterValue)
-        postViewModel.postLiveData.observe(this){
-            val recyclerView = findViewById<RecyclerView>(R.id.post_rv)
-            recyclerView.layoutManager = LinearLayoutManager(this)
-            postAdapter = PostAdapter(it,this)
-            recyclerView.adapter = postAdapter
-        }
-        postViewModel.isLoading.observe(this){
-            if(it){
-                loadingbar.visibility=View.VISIBLE
-            }
-            else{
-                loadingbar.visibility=View.INVISIBLE
-            }
-        }
+
+        postViewModel._listLiveData.observe(this, Observer {
+            postAdapter.submitData(lifecycle, it)
+
+            Log.i("meeena","$it")
+        })
     }
     private fun init(){
         repo= PostRepo(RetrofitBuilder.getInstance())
@@ -66,8 +75,6 @@ class PostActivity : AppCompatActivity(),OnPostItemClickListener {
 
     override fun onItemClick(link: String) {
         val intent = Intent(this, ContentDetailActivity::class.java)
-        Log.i("jacob","$link in activity")
-
         intent.putExtra("link", link)
         startActivity(intent)
     }

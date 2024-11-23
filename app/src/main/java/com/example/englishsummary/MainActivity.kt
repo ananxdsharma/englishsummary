@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             // Move to the next question
             var total_question =quizdata.size
             currentQuizIndex++
-            currentQuizIndex %= total_question
+            currentQuizIndex =currentQuizIndex%total_question
 
 
 
@@ -78,9 +78,9 @@ class MainActivity : AppCompatActivity() {
         quizViewModel.viewModelScope.launch(Dispatchers.IO) {
             try {
                 quizViewModel.fetchQuizDetail()
-                Log.i("Talha", "Calling Successful")
+                Log.i("mylogmsg", "Calling Successful")
             } catch (e: Exception) {
-                Log.e("Talha", "Error fetching quiz details", e)
+                Log.e("mylogmsg", "Error fetching quiz details", e)
             }
         }
 
@@ -122,8 +122,7 @@ class MainActivity : AppCompatActivity() {
         // Hide the next button initially
         nextBtn.visibility = View.GONE
 
-        Log.i("Talha", "Quiz question: ${quizQuestionText.text}")
-        Log.i("Talha", "Options: $allOptions")
+
     }
 
     private fun initViews() {

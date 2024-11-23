@@ -80,7 +80,7 @@
                         android:id="@+id/quiz_summary_ques"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Poetics by Aristole Summary in 3 minutes"
+                        android:text=""
                         android:textColor="@color/green" />
 
                     <TextView
@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:lineHeight="22sp"
-                        android:text="1. From which Shakespearean comedy do the lines ‘And thereby hangs a tale’ and ‘All the world’s a stage’ come?"
+                        android:text="Loading..."
                         android:textColor="@color/black" />
 
                     <RadioGroup
@@ -104,25 +104,25 @@
                             style="@style/Widget.Material3.CompoundButton.RadioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Paris" />
+                            android:text="Loading..." />
 
                         <RadioButton
                             android:id="@+id/option2RadioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="London" />
+                            android:text="Loading..." />
 
                         <RadioButton
                             android:id="@+id/option3RadioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Berlin" />
+                            android:text="Loading..." />
 
                         <RadioButton
                             android:id="@+id/option4RadioButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Madrid" />
+                            android:text="Loading..." />
                     </RadioGroup>
 
                     <Button
