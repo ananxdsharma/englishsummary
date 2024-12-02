@@ -1,7 +1,7 @@
 
 
-markdown
-Copy code
+
+
 # EnglishSummary App 📚
 
 The **EnglishSummary App** is an efficient and user-friendly Android application built with Kotlin. It enables users to explore posts related to **English Grammar** and **English Literature** in a clean, organized interface. Additionally, it features a **Quiz Module** to test and enhance knowledge of English concepts.
